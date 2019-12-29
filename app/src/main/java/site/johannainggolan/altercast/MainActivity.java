@@ -9,6 +9,7 @@ import android.widget.ProgressBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.AppCompatTextView;
+import androidx.core.widget.ContentLoadingProgressBar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView rvPodcast = null;
     AppCompatTextView tvPodcastTitle = null;
     AppCompatImageView currentImagePodcast = null;
-    ProgressBar progressBar = null;
+    ContentLoadingProgressBar progressBar = null;
     ProgressDialog progressDialog=null;
     MediaPlayer mediaPlayer=null;
 
@@ -49,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         rvPodcast = findViewById(R.id.rvPodcastListID);
         tvPodcastTitle = findViewById(R.id.podcastTitleID);
         currentImagePodcast = findViewById(R.id.currentImagePlayID);
-        progressBar = findViewById(R.id.progresLoadingID);
+        progressBar = findViewById(R.id.progress);
 
         progressBar.setVisibility(View.VISIBLE);
         progressDialog = new ProgressDialog(MainActivity.this);
@@ -67,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         podcastAdapter = new PodcastAdapter(MainActivity.this, myCollectionMediaList,mediaPlayer);
 
         if(podcastAdapter!=null){
-            progressBar.setVisibility(View.GONE);
+            progressBar.setVisibility(View.VISIBLE);
             progressDialog.dismiss();
         }
 

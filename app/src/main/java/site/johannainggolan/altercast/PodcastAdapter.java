@@ -21,6 +21,8 @@ public class PodcastAdapter extends RecyclerView.Adapter<PodcastAdapter.CustomVi
 
     MediaPlayer mediaPlayer;
 
+    boolean isMusicOn = false ;
+
 
 
     public PodcastAdapter(Context context,  ArrayList<Integer> mypodcastlist, MediaPlayer mediaPlayer){
@@ -48,13 +50,22 @@ public class PodcastAdapter extends RecyclerView.Adapter<PodcastAdapter.CustomVi
             holder.tvListPodcast.setText("List Podcast" + getItemId(position));
 
 
+
+
             holder.tvListPodcast.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
-                    mediaPlayer = MediaPlayer.create(context,mypodcastlist.get(position));
+                     mediaPlayer.reset();
+                     mediaPlayer = null;
+                     mediaPlayer = MediaPlayer.create(context,mypodcastlist.get(position));
+                     mediaPlayer.start();
 
-                    mediaPlayer.start();
+//                    if(isMusicOn == true){
+//
+//                        mediaPlayer.stop();
+//
+//                    }
 
 
 
